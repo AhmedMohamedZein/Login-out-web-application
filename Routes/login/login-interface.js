@@ -1,16 +1,16 @@
-const Rout = require('express').Router();
+const Route = require('express').Router();
 const { MongoClient } = require("mongodb");
 require("dotenv").config();
 const jwt = require("jsonwebtoken");
 const client = new MongoClient( process.env.URI_CONNECT );
 
-
-Rout.post ( '/'  , authentication , createToken ,  (req,res)=>{
+ //The Login root that 
+Route.post ( '/'  , authentication , createToken ,  (req,res)=>{
 
     if ( res.locals.authenticated == false){
-        
-         
-        res.send (  "The username, password is wrong  or there is a bad connection to DB!!"  );
+
+        res.send ( false  +"The username, password is wrong  or there is a bad connection to DB!!"  );
+    
     }
     else {
     const token = res.locals.token ;
@@ -68,4 +68,4 @@ function createToken (req , res , next) {
     } 
 }
 
-module.exports = Rout ;
+module.exports = Route ;
