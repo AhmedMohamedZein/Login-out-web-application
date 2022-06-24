@@ -4,17 +4,16 @@ require("dotenv").config();
 const jwt = require("jsonwebtoken");
 const client = new MongoClient( process.env.URI_CONNECT );
 
- //The Login root that 
+ //The Login root
 Route.post ( '/'  , authentication , createToken ,  (req,res)=>{
 
     if ( res.locals.authenticated == false){
-
-        res.send ( false  +"The username, password is wrong  or there is a bad connection to DB!!"  );
-    
+        res.send ( false  +" The username, password is wrong  or there is a bad connection to DB!!"  );
     }
     else {
-    const token = res.locals.token ;
-    res.send( token );
+        const token = res.locals.token ;
+        // we should return "the after the login page"
+        res.redirect("/home").cookie( token );
     }
 });
 
@@ -58,7 +57,7 @@ function createToken (req , res , next) {
         next();
     }
     else {
-            // the "res.locals.authenticated" is a array beacuse the result of the authentication function is an array
+            // the "res.locals.authenticated" is an array
         const Object = {
             username : res.locals.authenticated[0].login.username ,
             password : res.locals.authenticated[0].login.password
