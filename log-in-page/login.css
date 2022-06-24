@@ -1,45 +1,42 @@
 body {
-    background-color: rgb(63, 63, 63);
+    background-color: rgba(0, 0, 0, 0);
 }
 
 .layout {
     display: grid;
-    grid-template-columns: 33% 33% 33%;
-    place-items: center ;
+    grid-template-columns: 50% 35%;
+    justify-content: center;
+
 }
 
 .layout > div {
     display: flex;
     flex-wrap: wrap;
-    margin: 1em;
-    width: 60vh;
+    margin-left: 1em;
+    width: 70vh;
     height: 85vh;
-    justify-content: center;
+}
+.rightSection {
+    margin-top: 2em;
+    display: grid;
+    grid-template-rows: 30% 60% ;
 }
 .Front {
     font-size: 7vh;
-    color: rgb(202, 201, 201);
+    color: rgb(0, 0, 0);
     font-weight: bolder;
+    place-items: center ;
+    text-align: center;
 }
-#mainBox {
-
-    border-radius: 20%;
-    border: 20px solid rgb(202, 201, 201);
-    width: 55vh ;
-    height: 60vh ;
-
-}
-
 .internalComponent {
-
     display: grid;
     margin: 1em;
-    grid-template-rows:  22vh 22vh 8vh;
- 
+    grid-template-rows:  25vh 25vh 10vh 14vh 10vh;
+    justify-content: center;
+    align-items: center;
 }
 
-.internalComponent > div {
-
+.internalComponent > div{
     display: grid;
     grid-template-columns: 30% 70%;
     align-items: center;
@@ -47,31 +44,45 @@ body {
 
 input {
 
-    background-color: rgb(202, 201, 201);
+    background-color: rgb(255, 255, 255);
     height: 5vh;
-    font-family:'Times New Roman', Times, serif;
-    font-size: 3vh;
+    width: 32vh;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    font-size: 2.5vh;
+    border: solid black;
+    border-radius: 5%;
 }
 .fontstyle {
-
     font-size: 3vh;
-    color: rgb(202, 201, 201);
+    color: rgb(0, 0, 0);
     font-weight: bolder; 
-
 }
 
 button {
+    margin: 0 auto;
+    display: block;
     border-radius: 5%;
-    justify-content: center;
-    background-color:  rgb(63, 63, 63);;
-    width: 20vh;
+    background-color:  rgb(29, 155, 240);
+    width: 15vh;
+    height: 6vh;
     font-family: 'Times New Roman', Times, serif;
-    font-size: 3.3vh;
-    color:rgb(202, 201, 201) ;
+    font-size: 3vh;
+    color:rgb(255, 255, 255) ;
+    border-color: rgb(29, 155, 240);
 }
 
-span {
+
+img {
+    inset: 0px;
+    height: 100%;
+    position: absolute;
+    width: 55%;
+    z-index: -1;
+}
+
+.signUp {
     display: grid;
-    grid-template-columns: auto;
+    grid-template-rows: 50% 50%;
     justify-content: center;
+    text-align: center;
 }
