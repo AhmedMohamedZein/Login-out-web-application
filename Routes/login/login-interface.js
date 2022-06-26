@@ -13,7 +13,8 @@ Route.post ( '/'  , authentication , createToken ,  (req,res)=>{
     else {
         const token = res.locals.token ;
         // we should return "the after the login page"
-        res.redirect("/home").cookie( token );
+        
+        res.send( { token });
     }
 });
 

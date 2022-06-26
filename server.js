@@ -1,7 +1,8 @@
 const express = require('express');
 const cors = require("cors");
 const loginRoute  = require('./Routes/login/login-interface.js');
-const authorization = require('./Routes/login/authorization.js');
+const authorization = require('./Routes/authorization.js');
+const home = require("./Routes/home") ;
 require("dotenv").config();
 
 const app = express();
@@ -16,14 +17,16 @@ app.use (  express.json() );
 
 // End-points Routs 
     // check the authorization each time a request mades on the server  
+    // statless http
     app.use ( authorization );
     // the login end-point
     app.use ('/login' , loginRoute );
-
+    // home end-point 
+    app.use('/home' , home);
 // This end-point returns the Login-Page to the user
 app.get ( '/' , (req,res)=>{
 
-    res.statusCode(200).sendFile( __dirname + process.env.LOGIN_STATIC_PATH);
+    res.status(200).sendFile( __dirname + process.env.LOGIN_STATIC_PATH);
     
 });
 
