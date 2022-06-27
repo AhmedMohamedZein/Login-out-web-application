@@ -1,6 +1,6 @@
 # Login-out-web-application
 
-  #this application has been developed to show what has been learned.
+  this application has been developed to show what has been learned.
   
 
      Developed using Express framework.
