@@ -12,8 +12,9 @@ function verifyToken ( req , res , next  ) {
     // if authorizationHeader is null or Nan or empty or false .... 
     // return that the user of this request is not loggedin 
     if ( !authorizationHeader) {
-        console.log ( "Please login first !" , req.headers );
-        next();
+        // you can add a feature later 
+        // to restrict the un-authorized users
+        next() ; // this will get the requested end point Either way
     }
     else {
         const tokenBearer = authorizationHeader.split(" ") ;
@@ -22,7 +23,7 @@ function verifyToken ( req , res , next  ) {
         try {
         const tokenData =   jwt.verify(token ,  process.env.SECRET_KEY );
         res.locals.username = tokenData.username ;
-        console.log ( res.locals.username );
+        console.log ( res.locals.username , "An authoriz loged in");
         }catch(error) {
                 // what will happen if the token is invalid
                 // you can add whatever you want here 

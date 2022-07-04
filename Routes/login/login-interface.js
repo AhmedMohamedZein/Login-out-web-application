@@ -12,9 +12,10 @@ Route.post ( '/'  , authentication , createToken ,  (req,res)=>{
     }
     else {
         const token = res.locals.token ;
-        // we should return "the after the login page"
-        
-        res.send( { token });
+        // we will set the header location to the new location
+        res.setHeader("Location" , "http://192.168.1.12:3000/home") ;
+        console.log( res.getHeaders() );
+        res.send( {token} ) ; // returning the token in the body to save it in the localStorage
     }
 });
 
@@ -63,7 +64,7 @@ function createToken (req , res , next) {
             username : res.locals.authenticated[0].login.username ,
             password : res.locals.authenticated[0].login.password
         }
-        res.locals.token = jwt.sign(Object , process.env.SECRET_KEY ); 
+        res.locals.token = jwt.sign(Object , process.env.SECRET_KEY); 
         next();        
     } 
 }

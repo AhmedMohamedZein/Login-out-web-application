@@ -1,8 +1,9 @@
 const express = require('express');
 const cors = require("cors");
-const loginRoute  = require('./Routes/login/login-interface.js');
-const authorization = require('./Routes/authorization.js');
+const loginRoute  = require('./Routes/login/login-interface');
+const authorization = require('./Routes/authorization');
 const home = require("./Routes/home") ;
+const signUP = require ("./Routes/signUp");
 require("dotenv").config();
 
 const app = express();
@@ -12,6 +13,9 @@ const PORT = process.env.PORT || 8000 ;
 app.use(  cors()  );
 
 app.use ( express.static( process.env.FILE_PATH_LOGIN_PAGE ) );
+app.use ( express.static( process.env.FILE_PATH_HOME_PAGE ) );
+app.use ( express.static( process.env.FILE_PATH_SING_UP_PAGE ) );
+
 // TO Conver the comming requsts-body to json 
 app.use (  express.json() );
 
@@ -23,6 +27,8 @@ app.use (  express.json() );
     app.use ('/login' , loginRoute );
     // home end-point 
     app.use('/home' , home);
+    // sign up end-point handler
+    app.use('/signup' , signUP) ;
 // This end-point returns the Login-Page to the user
 app.get ( '/' , (req,res)=>{
 
